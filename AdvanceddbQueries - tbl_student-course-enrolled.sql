@@ -78,8 +78,7 @@ inner join student s on s.sid=e.sid
 inner join course c on c.cid=e.cid;
 
 -- INNER JOIN returns the Records those are common from the both(or every) Tables
-/*-- LEFT JOIN returns all the records from the left Table and only the matched records from the Joined Table (right). 
-Whenever a record in the left table doesn't presnt in the right table the query returns the null value for the record in the right table.*/
+/*-- LEFT JOIN returns all the records from the left Table and only the matched records from the Joined Table (right). whenever a record in the left table doesn't presnt in the right table the query returns the null value for the record in the right table.*/
 /*-- RIGHR JOIN is just the Opposite of the LEFT JOIN; 
 It returns all the records from the Right Table and just the matched records in the Left Table.*/
 -- FULL JOIN returns all the Records from All the Tables
@@ -93,3 +92,22 @@ where age = (select min(age) from Student)
 
 select * from Student
 where gpa = (select min(gpa) from Student)
+
+/*-- UNION operator is used to combine the result-set of two or more SELECT Statement Avoiding Duplicates
+The both select command should be run on similar tables of two virsions; meaning: both table should have similar columns*/
+-- UNION ALL operator includes the duplicate records as well
+
+-- Example: SELECT * FROM Student_tbl1 UNION SELECT * FROM Student_tbl2 
+
+/*-- EXCEPT Operator returns Unique Record from the left query which are not part of the Right Query. Similar to Set operation A - B*/
+-- Example: SELECT * FROM Student_tbl1 EXCEPT SELECT * FROM Student_tbl2
+
+-- INTERSECT Operator returns the records that are common to both select statement
+-- Example: SELECT * FROM Student_tbl1 INTERSECT SELECT * FROM Student_tbl2
+
+-- VIEW is a virtual table based on the result of an sql statement
+/*-- CREATE VIEW v_name AS
+SELECT * FROM tbl_name
+WHERE condition;*/
+-- Qureying from the VIEW: SELECT * FROM v_name;
+-- Droping VIEW: DROP VIEW v_name;
