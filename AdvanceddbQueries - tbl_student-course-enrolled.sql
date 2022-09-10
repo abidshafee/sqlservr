@@ -77,7 +77,7 @@ select s.sid, s.name, c.Subject, e.grade from enrolled e
 inner join student s on s.sid=e.sid 
 inner join course c on c.cid=e.cid;
 
--- INNER JOIN returns the Records that are common from both tables
+-- INNER JOIN returns the Records those are common from the both(or every) Tables
 
 -- Nested Query
 select * from Student
