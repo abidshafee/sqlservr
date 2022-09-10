@@ -1,5 +1,9 @@
-use [Abid]
-go
+-- Creating Database Abid
+CREATE database Abid;
+
+-- Using Database Abid
+USE [Abid]
+GO
 
 --Inserting data into Student Table
 insert into Student values
@@ -68,10 +72,12 @@ insert into enrolled values(3456327, '15-447', 'A+');
 -- Seecting destinct items in course table
 select distinct(grade) from enrolled;
 
--- query from multiple table
+-- query from multiple table (INNER JOIN)
 select s.sid, s.name, c.Subject, e.grade from enrolled e 
 inner join student s on s.sid=e.sid 
 inner join course c on c.cid=e.cid;
+
+-- INNER JOIN returns the Records that are common from both tables
 
 -- Nested Query
 select * from Student
