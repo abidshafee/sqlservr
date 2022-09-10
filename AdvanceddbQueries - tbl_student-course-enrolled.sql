@@ -78,6 +78,10 @@ inner join student s on s.sid=e.sid
 inner join course c on c.cid=e.cid;
 
 -- INNER JOIN returns the Records those are common from the both(or every) Tables
+/*-- LEFT JOIN returns all the records from the left Table and only the matched records from the Joined Table (right). whenever a record in the left table doesn't presnt in the right table the query returns the null value for the record in the right table.*/
+/*-- RIGHR JOIN is just the Opposite of the LEFT JOIN; 
+It returns all the records from the Right Table and just the matched records in the Left Table.*/
+-- FULL JOIN returns all the Records from All the Tables
 
 -- Nested Query
 select * from Student
