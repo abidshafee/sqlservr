@@ -3,8 +3,7 @@ go
 
 --Inserting data into Student Table
 insert into Student values
-(3456330,'Shafekul Abid','Abid@',31,3.41),
-(3456331,'Abid Shafee','Shafee@29',29,3.61);
+(3456330,'Shafekul Abid','Abid@',31,3.41);
 
 -- Inserting multiple Values
 insert into Student values
@@ -18,12 +17,17 @@ DELETE FROM [dbo].[Student]
       WHERE name='Rafiq Alam'
 GO
 
--- updating data in student table
+-- Updating data in student table
 update dbo.student set login='nobin@'
 where login='nobin@g'
 
---Set sid col as Primary key of the Student table
+--Setting sid col as Primary key of the Student table
 alter table Student add primary key (sid);
+
+/*
+ALTER Command is used to add, delete, modify the attributes of the relations (tables) in the database. 
+UPDATE Command is used to update existing records in a database.
+*/
 
 -- Creating Course table
 create table Course 
