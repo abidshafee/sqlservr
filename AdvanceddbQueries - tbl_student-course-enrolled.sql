@@ -22,16 +22,25 @@ DELETE FROM [dbo].[Student]
 GO
 
 -- Updating data in student table
-update dbo.student set login='nobin@'
+UPDATE dbo.student set login='nobin@'
 where login='nobin@g'
 
 --Setting sid col as Primary key of the Student table
-alter table Student add primary key (sid);
+ALTER table Student add primary key (sid);
 
 /*
 ALTER Command is used to add, delete, modify the attributes of the relations (tables) in the database. 
 UPDATE Command is used to update existing records in a database.
 */
+
+-- Insert new column to Student table
+ALTER table Student  
+ADD dob date;
+
+-- Delete Col from Student Table
+ALTER table Student
+DROP COLUMN dob;
+
 
 -- Creating Course table
 create table Course 
@@ -78,7 +87,8 @@ inner join student s on s.sid=e.sid
 inner join course c on c.cid=e.cid;
 
 -- INNER JOIN returns the Records those are common from the both(or every) Tables
-/*-- LEFT JOIN returns all the records from the left Table and only the matched records from the Joined Table (right). whenever a record in the left table doesn't presnt in the right table the query returns the null value for the record in the right table.*/
+/*-- LEFT JOIN returns all the records from the left Table and only the matched records from the Joined Table (right). 
+whenever a record in the left table doesn't presnt in the right table the query returns the null value for the record in the right table.*/
 /*-- RIGHR JOIN is just the Opposite of the LEFT JOIN; 
 It returns all the records from the Right Table and just the matched records in the Left Table.*/
 -- FULL JOIN returns all the Records from All the Tables
@@ -111,3 +121,30 @@ SELECT * FROM tbl_name
 WHERE condition;*/
 -- Qureying from the VIEW: SELECT * FROM v_name;
 -- Droping VIEW: DROP VIEW v_name;
+
+-- MERGE is the combination of INSERT, DELETE, and UPDATE statements
+-- Implementing the MARGE Statement
+/*MERGE [Target] AS T
+USING [Source] AS S
+	ON [JOIN Condition]
+WHEN MATCHED
+	THEN [UPDATE Statement]
+WHEN NOT MATCHED BY TARGET
+	THEN [INSERT Statement]
+WHEN NOT MATCHED BY SOURCE
+	THEN [DELETE Statement];*/
+
+-- Example of Merge Statement
+/*
+MERGE Student_tbl1 AS T -- Target
+USING Student_tbl2 AS S -- Source
+	ON T.sid = S.sid
+WHEN MATCHED
+	THEN update set T.age = S.age, T.gpa = S.gpa
+WHEN NOT MATCHED BY TARGET
+	THEN insert (sid, name, age, gpa)
+	values(S.sid, S.name, S.age, S.gpa)
+WHEN NOT MATCHED BY SOURCE
+	THEN delete;
+*/
+
