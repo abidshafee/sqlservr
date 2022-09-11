@@ -152,6 +152,7 @@ WHEN NOT MATCHED BY SOURCE -- When Target Table has record that Source Table doe
 
 -- Scalar Valued Function
 -- """"""""""""""""""""""
+-- Always returns a scalar value, such as: 1, 2, 9, etc.
 /* Syntax:
 CREATE FUNCTION fun_name(@param1 AS datatype, @param2 AS datatype)
 RETURNS return_datatype
@@ -166,6 +167,7 @@ CREATE FUNCTIOON addfive(@num as int)
 RETURNS int
 AS
 BEGIN
+-- pass
 RETURN(
 @num+5
 )
@@ -173,5 +175,30 @@ end;
 
 -- Calling the addfive() function
 SELECT dbo.addfive(1);
+
+-- Table valued function | returns a table
+-- Syntax for table valued Function:
+--""""""""""""""""""""""""""""""""""
+/* 
+CREATE FUNCTION func_name(@param1 datatype, @param2 datatype)
+RETURNS table
+AS
+RETURN (SELECT * FROM tbl_name WHERE [Condition])
+*/
+
+-- Example of Table Valued Function:
+
+CREATE function selgpa(@gpa as float)
+RETURN table
+AS
+RETURN
+(
+SELECT * FROM Student WHERE gpa = @gpa
+)
+
+-- Calling selgpa Function:
+SELECT * FROM dbo.selgpa(3.21);
+
+-- It will returns all the records of the stident with the gpa -> 3.21
 
 
