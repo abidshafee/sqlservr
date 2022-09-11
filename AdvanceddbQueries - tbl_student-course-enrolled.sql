@@ -135,16 +135,43 @@ WHEN NOT MATCHED BY SOURCE
 	THEN [DELETE Statement];*/
 
 -- Example of Merge Statement
+-- """"""""""""""""""""""""""
+-- Require Same Types of Column in both tables
 /*
 MERGE Student_tbl1 AS T -- Target
 USING Student_tbl2 AS S -- Source
 	ON T.sid = S.sid
 WHEN MATCHED
 	THEN update set T.age = S.age, T.gpa = S.gpa
-WHEN NOT MATCHED BY TARGET
+WHEN NOT MATCHED BY TARGET -- insert record from source table
 	THEN insert (sid, name, age, gpa)
 	values(S.sid, S.name, S.age, S.gpa)
-WHEN NOT MATCHED BY SOURCE
-	THEN delete;
+WHEN NOT MATCHED BY SOURCE -- When Target Table has record that Source Table doesn't have
+	THEN delete; -- Then DELETE that record from the Target Table
 */
+
+-- Scalar Valued Function
+-- """"""""""""""""""""""
+/* Syntax:
+CREATE FUNCTION fun_name(@param1 AS datatype, @param2 AS datatype)
+RETURNS return_datatype
+AS
+BEGIN
+-- Function Body
+RETURN value
+END*/
+
+-- Example of Scalar Valued Function
+CREATE FUNCTIOON addfive(@num as int)
+RETURNS int
+AS
+BEGIN
+RETURN(
+@num+5
+)
+end;
+
+-- Calling the addfive() function
+SELECT dbo.addfive(1);
+
 
