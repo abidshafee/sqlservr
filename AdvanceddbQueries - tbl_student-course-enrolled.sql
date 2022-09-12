@@ -199,6 +199,28 @@ SELECT * FROM Student WHERE gpa = @gpa
 -- Calling selgpa Function:
 SELECT * FROM dbo.selgpa(3.21);
 
--- It will returns all the records of the stident with the gpa -> 3.21
+-- It will returns all the records of the student with the gpa -> 3.21
+
+-- SQL Query Index
+-- Indexing Reduces query time for quering on large large dataset
+-- Syntax for Creaating index on more than one column
+
+CREATE INDEX index_name
+ON Student_tbl (Sid, Name);
+
+-- Temporary Table: name table including #
+-- Temporary table created in temporary database (tempDB) and Deleted as soon as session is terminated
+
+-- Syntax For Creating Temporary table:
+CREATE TABLE #tblName
+(
+	
+);
+
+-- Example of Tamporary Table:
+""""""""""""""""""""""""""""""
+
+
+
 
 
