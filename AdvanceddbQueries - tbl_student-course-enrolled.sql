@@ -219,8 +219,16 @@ CREATE TABLE #tblName
 
 -- Example of Tamporary Table:
 """"""""""""""""""""""""""""""
+CREATE TABLE #tmpstdtbl(
+sid int Primary Key,
+Name varchar(20)
+);
 
+SELECT * FROM #tmpstdtbl;
 
+INSERT into #tmpstdtbl VALUES(
+1, 'Khairul Alam'
+);
 
 
 
