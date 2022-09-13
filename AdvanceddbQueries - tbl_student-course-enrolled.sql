@@ -257,3 +257,16 @@ END
 FROM Student
 GO
 
+-- IIF() Function:
+-- """""""""""""""
+-- IIF() function is an alternative for the case statement
+-- Syntax For Case Statement:
+/*
+IIF(boolean_expression, true_value, false_value)
+*/
+
+-- Example of IIF() Function:
+SELECT * , 
+IIF(gpa>3.0, 'Pass', 'Fail') as PassFail 
+FROM Student;
+GO
