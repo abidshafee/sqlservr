@@ -15,4 +15,7 @@ AS
 SELECT sid, gpa FROM Student
 GO;
 
+-- Execute Stored Procedure
+EXEC stdgpa;
+
 
