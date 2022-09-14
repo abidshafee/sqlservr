@@ -50,7 +50,9 @@ END CATCH
 
 -- TRANSACTION
 -- """""""""""
--- Transaction is a group of command that change stored in a database
+-- Transaction is a group of command that change stored in a database.
+-- IF (any) Command/(s) Fails the Transaction will ROLLBACK.
+-- Must COMMIT for Transaction Change Data in the Database.
 -- Syntax for transaction
 /*
 BEGIN TRY
@@ -67,4 +69,16 @@ BEGIN CATCH
     PRINT 'Transaction Rolled Back'
 END CATCH
 */
+
+-- Example of Transaction
+-- """"""""""""""""""""""
+BEGIN TRANSACTION
+    UPADTE Student SET gpa = 3.77
+    WHERE sid=3062137
+COMMIT TRANSACTION
+ROLLBACK TRANSACTION;
+-- Here if the command doesn't find the given sid-
+-- The Command will be cancelled -
+--and Transaction willbe Rolledback
+
 
