@@ -77,8 +77,22 @@ BEGIN TRANSACTION
     WHERE sid=3062137
 COMMIT TRANSACTION
 ROLLBACK TRANSACTION;
--- Here if the command doesn't find the given sid-
+-- Here if the command doesn't find the given sid then -
 -- The Command will be cancelled -
---and Transaction willbe Rolledback
+-- and Transaction will be Rolledback
+
+-- TRANSACTION in TRY-CATCH
+-- """"""""""""""""""""""""
+BEGIN TRY
+    BEGIN TRANSACTION
+      UPDATE Student SET gpa = 3.71 WHERE sid=3062137
+      UPDATE Student SET gpa = 3.50/0 WHERE sid=5123417 --0DivErr!
+    COMMIT TRANSACTION
+    PRINT 'Transaction Commited!'
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION
+    PRINT 'Transaction Rolledback'
+END CATCH
 
 

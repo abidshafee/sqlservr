@@ -48,7 +48,4 @@ GO;
 EXEC Studentgpa @gpa = 3.5;
 EXEC Studentgpa @gpa = 3.0;
 
--- Exception Handling 
--- An Error condition during a program execution is called as exception;
--- So the mechanism for handing such as exception is exception handling
 
