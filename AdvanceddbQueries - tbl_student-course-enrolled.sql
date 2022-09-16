@@ -50,6 +50,11 @@ create table Course
 
 	primary key(cid)
 );
+
+-- To make sid in Student table auto increament -
+-- use the keyword IDENTITY(1, 1)
+-- Means start from 1 and automatically increament by 1.
+
 select * from Course;
 
 insert into Course values(
