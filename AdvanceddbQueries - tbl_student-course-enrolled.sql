@@ -1,3 +1,17 @@
+-- The file Contains TSQL Code:
+/*
+"""
+T-SQL (Transact-SQL) is a set of programming extensions from Sybase and Microsoft that add several features to the Structured Query Language (SQL), including transaction control, exception and error handling, row processing and declared variables. All applications that communicate with SQL Server do so by sending T-SQL statements to the server.
+
+The most popular T-SQL statement is the stored procedure, which is a compiled and stored T-SQL code. Similar to views, stored procedures generate an execution plan when called the first time. The difference is stored procedures can select data and execute any T-SQL code within any parameters.
+
+User-defined functions are another example of T-SQL statements. User-defined functions take input parameters, perform an action and return the results to the call.
+"""
+Fome more>>
+""""""""""'
+Ref: https://www.techtarget.com/searchdatamanagement/definition/T-SQL
+*/
+
 -- Creating Database Abid
 CREATE database Abid;
 
