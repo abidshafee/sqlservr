@@ -9,7 +9,7 @@
    etc.
 */
 
--- Syntax For Case Statement: 
+-- Syntax For CASE Statement: 
 /* CASE
       WHEN condition1 THEN result1
       WHEN condition2 THEN result2
@@ -19,14 +19,14 @@
 */
 -- Example of Case Statement:
 SELECT *, grade = 
-case
-when gpa=4 then 'A+'
-when gpa>3.5 then 'A'
-when gpa<3.5 then 'A-'
-else 'Missing'
+CASE
+    WHEN gpa=4 THEN 'A+'
+    WHEN gpa>3.5 THEN 'A'
+    WHEN gpa<3.5 THEN 'A-'
+ELSE 'Missing'
 END
 FROM Student
-GO
+GO;
 
 -- IIF() Function:
 -- """""""""""""""
