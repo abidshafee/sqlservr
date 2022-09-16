@@ -202,7 +202,7 @@ SELECT * FROM dbo.selgpa(3.21);
 -- It will returns all the records of the student with the gpa -> 3.21
 
 -- SQL Query Index
--- Indexing Reduces query time for quering on large large dataset
+-- Indexing Reduces query time for quering on the large dataset
 -- Syntax for Creaating index on more than one column
 
 CREATE INDEX index_name
@@ -268,5 +268,5 @@ IIF(boolean_expression, true_value, false_value)
 -- Example of IIF() Function:
 SELECT * , 
 IIF(gpa>3.0, 'Pass', 'Fail') as PassFail 
-FROM Student;
-GO
+FROM Student
+GO;
