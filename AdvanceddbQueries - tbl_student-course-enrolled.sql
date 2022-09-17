@@ -11,6 +11,7 @@ Fome more>>
 """"""""""'
 Ref: https://www.techtarget.com/searchdatamanagement/definition/T-SQL
 */
+-- SQL is not case sensitive; For Identity we've wrote the keyword in CAPs
 
 -- Creating Database Abid
 CREATE database Abid;
@@ -49,7 +50,7 @@ UPDATE Command is used to update existing records in a database.
 
 -- Insert new column to Student table
 ALTER table Student  
-ADD dob date;
+ADD dob DATE;
 
 -- Delete Col from Student Table
 ALTER table Student
@@ -57,33 +58,33 @@ DROP COLUMN dob;
 
 
 -- Creating Course table
-create table Course 
+CREATE TABLE Course 
 (
-	cid varchar(20) not null,
-	name varchar(50) not null,
+	cid VARCHAR(20) NOT NULL,
+	name VARCHAR(50) NOT NULL,
 
-	primary key(cid)
+	PRIMARY KEY(cid)
 );
 
 -- To make sid in Student table auto increament -
--- use the keyword IDENTITY(1, 1)
+-- use the keyword IDENTITY(1, 1).
 -- Means start from 1 and automatically increament by 1.
 
-select * from Course;
+SELECT * FROM Course;
 
-insert into Course values(
+INSERT INTO Course VALUES(
 	'15-447', 'SQL Server Management Studio'
 );
 
--- Creating table enrolled with foreign table contrint
-Create Table enrolled
+-- Creating table enrolled with foreign table constrint
+CREATE Table enrolled
 (
-	sid int,
-	cid varchar(20),
-	grade varchar(20)
+	sid INT,
+	cid VARCHAR(20),
+	grade VARCHAR(20)
 
-	Foreign key (sid) references student(sid),
-	Foreign key (cid) references course(cid)
+	Foreign key (sid) REFERENCES student(sid),
+	Foreign key (cid) REFERENCES course(cid)
 );
 select * from enrolled;
 select * from Student;
@@ -97,43 +98,60 @@ insert into enrolled values(3456327, '15-445', 'B-');
 insert into enrolled values(3456327, '15-446', 'A-');
 insert into enrolled values(3456327, '15-447', 'A+');
 
--- Seecting destinct items in course table
-select distinct(grade) from enrolled;
+-- Seecting destinct items in the course table
+-- """""""""""""""""""""""""""""""""""""""""""
+SELECT DISTINCT(grade) FROM enrolled;
 
--- query from multiple table (INNER JOIN)
-select s.sid, s.name, c.Subject, e.grade from enrolled e 
-inner join student s on s.sid=e.sid 
-inner join course c on c.cid=e.cid;
+-- Querying from multiple table (INNER JOIN)
+--"""""""""""""""""""""""""""""""""""""""
+SELECT s.sid, s.name, c.Subject, e.grade FROM enrolled e 
+INNER JOIN student s on s.sid=e.sid 
+INNER JOIN course c on c.cid=e.cid;
 
 -- INNER JOIN returns the Records those are common from the both(or every) Tables
 /*-- LEFT JOIN returns all the records from the left Table and only the matched records from the Joined Table (right). 
 whenever a record in the left table doesn't presnt in the right table the query returns the null value for the record in the right table.*/
-/*-- RIGHR JOIN is just the Opposite of the LEFT JOIN; 
+/*-- RIGHR JOIN just do the Opposite of the LEFT JOIN; 
 It returns all the records from the Right Table and just the matched records in the Left Table.*/
 -- FULL JOIN returns all the Records from All the Tables
 
 -- Nested Query
-select * from Student
-where age = (select max(age) from Student)
+--""""""""""""""
+SELECT * FROM Student
+WHERE age = (SELECT MAX(age) FROM Student)
 
-select * from Student
-where age = (select min(age) from Student)
+SELECT * FROM Student
+WHERE age = (SELECT MIN(age) FROM Student)
 
-select * from Student
-where gpa = (select min(gpa) from Student)
+SELECT * FROM Student
+WHERE gpa = (SELECT MIN(gpa) FROM Student)
 
+-- UNION Operator (Combine Avoid Duplicates)
+-- """""""""""""""""""""""""""""""""""""""""
 /*-- UNION operator is used to combine the result-set of two or more SELECT Statement Avoiding Duplicates
 The both select command should be run on similar tables of two virsions; meaning: both table should have similar columns*/
 -- UNION ALL operator includes the duplicate records as well
 
--- Example: SELECT * FROM Student_tbl1 UNION SELECT * FROM Student_tbl2 
+-- Example: 
+SELECT * FROM Student_tbl1 UNION SELECT * FROM Student_tbl2 
 
-/*-- EXCEPT Operator returns Unique Record from the left query which are not part of the Right Query. Similar to Set operation A - B*/
--- Example: SELECT * FROM Student_tbl1 EXCEPT SELECT * FROM Student_tbl2
+-- EXCEPT Operator
+-- """""""""""""""
+-- EXCEPT Operator returns Unique Record from the left query which are not part of the Right Query. 
+-- Similar to Set operation (A - B)
 
+-- Example: 
+SELECT * FROM Student_tbl1 EXCEPT SELECT * FROM Student_tbl2
+
+-- INTERSECT Operator
+-- """"""""""""""""""
 -- INTERSECT Operator returns the records that are common to both select statement
--- Example: SELECT * FROM Student_tbl1 INTERSECT SELECT * FROM Student_tbl2
 
+-- Example: 
+SELECT * FROM Student_tbl1 INTERSECT SELECT * FROM Student_tbl2
+
+-- VIEW
+-- """""
 -- VIEW is a virtual table based on the result of an sql statement
 /*-- CREATE VIEW v_name AS
 SELECT * FROM tbl_name
@@ -155,7 +173,7 @@ WHEN NOT MATCHED BY SOURCE
 
 -- Example of Merge Statement
 -- """"""""""""""""""""""""""
--- Require Same Types of Column in both tables
+-- Required Identical Columns in both tables
 /*
 MERGE Student_tbl1 AS T -- Target
 USING Student_tbl2 AS S -- Source
@@ -165,7 +183,7 @@ WHEN MATCHED
 WHEN NOT MATCHED BY TARGET -- insert record from source table
 	THEN insert (sid, name, age, gpa)
 	values(S.sid, S.name, S.age, S.gpa)
-WHEN NOT MATCHED BY SOURCE -- When Target Table has record that Source Table doesn't have
+WHEN NOT MATCHED BY SOURCE -- When Target has record that Source doesn't have
 	THEN delete; -- Then DELETE that record from the Target Table
 */
 
