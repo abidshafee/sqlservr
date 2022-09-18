@@ -25,3 +25,25 @@ END;
 
 -- Calling the addfive function
 SELECT dbo.addfive(1);
+
+-- Table Valued Function
+-- """""""""""""""""""""
+-- Returns table
+/* Syntax
+CREATE FUNCTION f_name(@param1 AS DATATYPE, @param2 AS DATATYPE)
+RETURN table
+AS
+RETURN (SELECT * FROM tbl_name WHERE <Condition>)
+*/
+
+-- Example of Table Valued Function
+CREATE FUNCTION select_gpa(@gpa AS FLOAT)
+RETURN Table
+AS
+RETURN (SELECT * FROM Student WHERE gpa = @gpa);
+
+-- Calling the table vlued function: select_gpa()
+SELECT * FROM dbo.select_gpa(3.40);
+
+-- this will return all the records of the students have gpa 3.4
+
