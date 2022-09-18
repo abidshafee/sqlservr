@@ -130,7 +130,9 @@ WHERE gpa = (SELECT MIN(gpa) FROM Student)
 -- """""""""""""""""""""""""""""""""""""""""
 /*-- UNION operator is used to combine the result-set of two or more SELECT Statement Avoiding Duplicates
 The both select command should be run on similar tables of two virsions; meaning: both table should have similar columns*/
+
 -- UNION ALL operator includes the duplicate records as well
+-- """""""""
 
 -- Example: 
 SELECT * FROM Student_tbl1 UNION SELECT * FROM Student_tbl2 
@@ -153,9 +155,13 @@ SELECT * FROM Student_tbl1 INTERSECT SELECT * FROM Student_tbl2
 -- VIEW
 -- """""
 -- VIEW is a virtual table based on the result of an sql statement
-/*-- CREATE VIEW v_name AS
+-- Syntax for creating VIEW
+/*
+CREATE VIEW v_name AS
 SELECT * FROM tbl_name
-WHERE condition;*/
+WHERE condition;
+*/
+
 -- Qureying from the VIEW: SELECT * FROM v_name;
 -- Droping VIEW: DROP VIEW v_name;
 
@@ -191,16 +197,18 @@ WHEN NOT MATCHED BY SOURCE -- When Target has record that Source doesn't have
 -- """"""""""""""""""""""
 -- Always returns a scalar value, such as: 1, 2, 9, etc.
 /* Syntax:
+-- """""""
 CREATE FUNCTION fun_name(@param1 AS datatype, @param2 AS datatype)
 RETURNS return_datatype
 AS
 BEGIN
 -- Function Body
 RETURN value
-END*/
+END;
+*/
 
 -- Example of Scalar Valued Function
-CREATE FUNCTIOON addfive(@num as int)
+CREATE FUNCTION addfive(@num as int)
 RETURNS int
 AS
 BEGIN
