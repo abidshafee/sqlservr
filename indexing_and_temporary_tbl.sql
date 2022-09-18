@@ -9,6 +9,9 @@
 CREATE INDEX index_name
 ON Student_tbl (sid, name);
 */
+-- Creating index on Student Table
+CREATE INDEX index_name
+ON Student(sid, name);
 
 -- Temporary Table
 -- """""""""""""""
