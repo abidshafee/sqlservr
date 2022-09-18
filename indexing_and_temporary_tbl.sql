@@ -8,6 +8,7 @@
 --"""""""
 CREATE INDEX index_name
 ON Student_tbl (sid, name);
+*/
 
 -- Temporary Table
 -- """""""""""""""
@@ -30,9 +31,8 @@ Primary Key (ID)
 SELECT * FROM #my_temp_tbl;
 
 INSERT into #tmpstdtbl(Name, Age, Address)
-VALUES('Khairul Alam', 27, 'kushtia);
-INSERT into #tmpstdtbl(Name, Age, Address)
-VALUES('Karman Core', 28, 'Pabna');
+VALUES('Khairul Alam', 27, 'kushtia),
+       ('Karman Clore', 28, 'Pabna');
 
 
 
