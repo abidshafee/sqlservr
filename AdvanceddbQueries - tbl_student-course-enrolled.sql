@@ -225,7 +225,7 @@ SELECT dbo.addfive(1);
 -- Syntax for table valued Function:
 --""""""""""""""""""""""""""""""""""
 /* 
-CREATE FUNCTION func_name(@param1 datatype, @param2 datatype)
+CREATE FUNCTION func_name(@param1 AS datatype, @param2 AS datatype)
 RETURNS table
 AS
 RETURN (SELECT * FROM tbl_name WHERE [Condition])
