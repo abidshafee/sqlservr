@@ -19,5 +19,14 @@ A Database Administrator (DBA) directs or performs all activities related to mai
  - UAT DBA (**Under Application Testing Database**)
  - Data Warehouse DBA
 
+## SQL Server System Database
+------------------------------
+System databases are defined by microsoft and are needed for SQL Server to Operate. These databases include:
+ - Master
+ - Model
+ - MSDB
+ - TempDB
 
-
+## Model Database
+--------------------------------
+The model database is used as a template whenever a new user database is created. 
